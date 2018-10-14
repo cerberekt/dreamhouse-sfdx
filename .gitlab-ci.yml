@@ -15,5 +15,6 @@ before_script:
 test:
   stage: test
   script:
-    - scripts/sfdx-test.sh
+    - chmod +x  ./scripts/sfdx-test.sh
+    - ./scripts/sfdx-test.sh
   coverage: '/Total Coverage: (\w*).*$/'
