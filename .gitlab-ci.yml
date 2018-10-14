@@ -9,8 +9,8 @@ stages:
   - test
 
 before_script:
-  - mkdir -p ${CI_PROJECT_DIR}/assets/
-  - echo -e $server_key | base64 -d > ${CI_PROJECT_DIR}/assets/server.key
+  - mkdir -p $CI_PROJECT_DIR/assets/
+  - echo -e $server_key | base64 -d > $CI_PROJECT_DIR/assets/server.key
 
 test:
   stage: test
