@@ -6,7 +6,7 @@ stages:
 
 before_script:
   - mkdir -p $CI_PROJECT_DIR/assets/
-  - echo -e $server_key | iconv -f UTF8 -t UTF16LE | base64 -d > $CI_PROJECT_DIR/assets/server.key
+  - echo $server_key > $CI_PROJECT_DIR/assets/server.key
 
 test:
   stage: test
