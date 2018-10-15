@@ -5,8 +5,9 @@ stages:
   - test
 
 before_script:
-  - mkdir -p $CI_PROJECT_DIR/assets/
-  - echo $server_key > $CI_PROJECT_DIR/assets/server.key
+  - mkdir -p ~/assets
+  - chmod 700 ~/assets
+  - echo $server_key > ~/assets/server.key
 
 test:
   stage: test
