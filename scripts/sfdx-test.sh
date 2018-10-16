@@ -7,6 +7,11 @@ if [ -z $CI_SFDX_USERNAME ];then
   exit 1
 fi
 
+if [ -z $$CI_SFDX_CONSUMER_KEY ];then
+  echo "You must define CI_SFDX_CONSUMER_KEY"
+  exit 1
+fi
+
 if [ ! -f ~/assets/server.key ];then
   echo "$CI_PROJECT_DIR/$CI_SFDX_KEY must be present"
   exit 1
@@ -17,7 +22,7 @@ if [ ! -f "$CI_PROJECT_DIR/$CI_SFDX_SCRATCH_DEF" ];then
   exit 1
 fi
 
-sfdx force:auth:jwt:grant --clientid ${CI_SFDX_CONSUMER_KEY} --jwtkeyfile ~/assets/server.key --username $CI_SFDX_USERNAME --setdefaultdevhubusername -a HubOrg
+sfdx force:auth:jwt:grant --clientid $CI_SFDX_CONSUMER_KEY --jwtkeyfile ~/assets/server.key --username $CI_SFDX_USERNAME --setdefaultdevhubusername -a HubOrg
 sfdx force:org:create -v HubOrg -s -f "$CI_PROJECT_DIR/$CI_SFDX_SCRATCH_DEF" -a $CI_SFDX_ORG
 sfdx force:source:push -u $CI_SFDX_ORG
 sfdx force:apex:test:run -u $CI_SFDX_ORG -c -r json | tee result.json
