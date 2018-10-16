@@ -1,0 +1,17 @@
+# Sample ci file to copy to your project
+image: simkim/salesforcedx-gitlab-ci
+
+stages:
+  - test
+
+before_script:
+  - mkdir -p ~/assets
+  - chmod 700 ~/assets
+  - echo -e $secret_key_b64 | base64 -d > ~/assets/server.key
+
+test:
+  stage: test
+  script:
+    - chmod +x  ./scripts/sfdx-test.sh
+    - ./scripts/sfdx-test.sh
+  coverage: '/Total Coverage: (\w*).*$/'
