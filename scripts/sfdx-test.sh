@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 if [ -z $CI_SFDX_USERNAME ];then
   echo "You must define CI_SFDX_USERNAME with your HubOrg username"
