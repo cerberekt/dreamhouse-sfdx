@@ -7,7 +7,7 @@ stages:
 before_script:
   - mkdir -p ~/assets
   - chmod 700 ~/assets
-  - echo $server_key > ~/assets/server.key
+  - echo -e $secret_key_b64 | base64 -d > ~/assets/server.key
 
 test:
   stage: test
