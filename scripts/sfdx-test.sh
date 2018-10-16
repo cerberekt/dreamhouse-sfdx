@@ -7,7 +7,7 @@ if [ -z $CI_SFDX_USERNAME ];then
   exit 1
 fi
 
-if [ -z $$CI_SFDX_CONSUMER_KEY ];then
+if [ -z $CI_SFDX_CONSUMER_KEY ];then
   echo "You must define CI_SFDX_CONSUMER_KEY"
   exit 1
 fi
